@@ -81,7 +81,7 @@ def criar_exame(titulo, data_hora_inicio, duracao_minutos, criado_por):
     sql = """
         insert into exames (titulo, data_hora_inicio, duracao_minutos, criado_por)
         values (%s, %s, %s, %s)
-"""
+    """
     valores = (titulo, data_hora_inicio, duracao_minutos, criado_por)
 
     mycursor.execute(sql, valores)
