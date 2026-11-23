@@ -1,21 +1,19 @@
 from connect_db import start_connection
+
 mydb = start_connection()
 mycursor = mydb.cursor()
-
-
 
 mycursor.execute("""
     create table if not exists questoes (
         id int auto_increment primary key,
         texto text not null,
         tipo varchar(50) not null,
-        opccoes_json text not null,
+        opcoes_json text not null,
         resposta_correta text not null,
         dificuldade text not null,
         disciplina text not null
     )
 """)
-
 
 mycursor.execute("""
     create table if not exists exames (
@@ -43,6 +41,7 @@ mycursor.execute("""
     create table if not exists alunos (
         id int not null auto_increment primary key,
         numero_aluno int not null,
+        nome varchar(120) not null,
         email varchar(50) not null,
         turma text not null
     )
@@ -72,3 +71,7 @@ mycursor.execute("""
         foreign key (questao_id) references questoes(id)
     )
 """)
+
+mydb.commit()
+mycursor.close()
+mydb.close()
