@@ -194,3 +194,4 @@ def remover_questao_do_exame(exame_id, questao_id):
 
     mycursor.close()
     mydb.close()
+
